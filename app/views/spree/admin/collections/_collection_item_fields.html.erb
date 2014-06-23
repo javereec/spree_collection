@@ -5,6 +5,7 @@
   </td>
   <td class="collectionable_type"><%= f.select :collectionable_type, options_for_select([['Product', 'Spree::Product'],['Taxon', 'Spree::Taxon']], f.object.collectionable_type ) %></td>
   <td class="collectionable_id"><%= f.text_field :collectionable_id %></td>
-  <td class="html_class"><%= f.text_field :html_class %></td>
+  <td class="partial_override"><%= f.text_field :partial_override %></td>
+  <td class="description"><%= f.text_area :description, :cols => 55, :rows => 1 %></td>
   <td class="actions"><%= link_to_remove_fields Spree.t(:remove), f, :no_text => true %></td>
 </tr>

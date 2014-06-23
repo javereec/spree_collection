@@ -24,16 +24,17 @@
     <table class="index sortable" data-hook data-sortable-link="<%= update_items_positions_admin_collections_url %>">
       <thead data-hook="option_header">
         <tr>
-          <th colspan="2"><%= Spree.t(:collectionable_type) %></th>
-          <th><%= Spree.t(:collectionable_id) %></th>
-          <th><%= Spree.t(:html_class) %></th>
+          <th colspan="2" width="15%"><%= Spree.t(:collectionable_type) %></th>
+          <th width="10%"><%= Spree.t(:collectionable_id) %></th>
+          <th width="15%"><%= Spree.t(:partial_override) %></th>
+          <th width="45%"><%= Spree.t(:description) %></th>
           <th class="actions"></th>
         </tr>
       </thead>
       <tbody id="collection_items">
         <% if @collection.collection_items.empty? %>
           <tr id="none" data-hook="collection_none" class="<%= cycle('odd', 'even')%>">
-            <td colspan="4"><%= Spree.t(:none) %></td>
+            <td colspan="5"><%= Spree.t(:none) %></td>
             <td class="actions"></td>
           </tr>
         <% else %>
