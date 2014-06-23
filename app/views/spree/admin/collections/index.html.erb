@@ -1,0 +1,48 @@
+<% content_for :page_title do %>
+  <%= Spree.t(:collections) %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <li id="new_ot_link">
+    <%= button_link_to Spree.t(:new_collection), new_admin_collection_url, { :remote => true, :icon => 'icon-plus', :id => 'new_collection_link' } %>
+  </li>
+<% end %>
+
+<div id="new_collection"></div>
+
+<% if @collections.any? %>
+<table class="index sortable" id="listing_collections" data-hook data-sortable-link="<%= update_positions_admin_collections_url %>">
+  <colgroup>
+    <col style="width: 10%">
+    <col style="width: 35%">
+    <col style="width: 40%">
+    <col style="width: 15%">
+  </colgroup>
+  <thead>
+    <tr data-hook="option_header">
+      <th class="no-border"></th>
+      <th><%= Spree.t(:name) %></th>
+      <th><%= Spree.t(:html_class) %></th>
+      <th class="actions"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @collections.each do |collection| %>
+      <tr class="spree_collection <%= cycle('odd', 'even')%>" id="<%= spree_dom_id collection %>" data-hook="option_row">
+        <td class="no-border"><span class="handle"></span></td>
+        <td class="align-center"><%= collection.name %></td>
+        <td class="align-center"><%= collection.html_class %></td>
+        <td class="actions">
+          <%= link_to_edit(collection, :class => 'admin_edit_collection', :no_text => true) %>
+          <%= link_to_delete(collection, :no_text => true) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% else %>
+  <div class="alpha twelve columns no-objects-found">
+    <%= Spree.t(:no_resource_found, resource: I18n.t(:other, scope: 'activerecord.models.spree/collection')) %>,
+    <%= link_to Spree.t(:add_one), spree.new_admin_collection_path %>!
+  </div>
+<% end %>
