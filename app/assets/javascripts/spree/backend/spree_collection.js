@@ -19,9 +19,10 @@ $.fn.productAutocompleteSingle = function () {
         return {
           q: {
             name_cont: term,
-            sku_cont: term
+            master_sku_eq: term,
+            m: 'or',
           },
-          m: 'OR',
+
           token: Spree.api_key
         };
       },
@@ -33,10 +34,13 @@ $.fn.productAutocompleteSingle = function () {
       }
     },
     formatResult: function (product) {
-      return product.id + ' ' + product.name;
+      return "[" + product.id + "] " + product.name;
     },
     formatSelection: function (product) {
-      return product.id + ' ' + product.name;
+      if (product.length == 0) {
+        return 'Search a product';
+      };
+      return "[" + product.id + "] " + product.name;
     }
   });
 };
@@ -64,9 +68,7 @@ $.fn.taxonAutocompleteSingle = function () {
         return {
           q: {
             name_cont: term,
-            sku_cont: term
           },
-          m: 'OR',
           token: Spree.api_key
         };
       },
@@ -78,10 +80,13 @@ $.fn.taxonAutocompleteSingle = function () {
       }
     },
     formatResult: function (taxon) {
-      return taxon.id + ' ' + taxon.name;
+      return "[" + taxon.id + "] " + taxon.name;
     },
     formatSelection: function (taxon) {
-      return taxon.id + ' ' + taxon.name;
+      if (taxon.length == 0) {
+        return 'Search a taxon';
+      };
+      return "[" + taxon.id + "] " + taxon.name;
     }
   });
 };

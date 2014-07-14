@@ -6,7 +6,7 @@
   <li>
     <span id="new_add_collection_item" data-hook>
       <%= link_to_add_fields Spree.t(:add_collection_item), "tbody#collection_items", :class => 'button icon-plus' %>
-    </span>      
+    </span>
   </li>
   <li>
     <%= button_link_to Spree.t(:back_to_collections_list), spree.admin_collections_path, :icon => 'icon-arrow-left' %>
@@ -18,7 +18,7 @@
 <%= form_for [:admin, @collection] do |f| %>
   <fieldset>
     <legend align="center"><%= Spree.t(:collection_items) %></legend>
-    
+
     <%= render :partial => 'form', :locals => { :f => f } %>
 
     <table class="index sortable" data-hook data-sortable-link="<%= update_items_positions_admin_collections_url %>">
@@ -49,5 +49,7 @@
   </fieldset>
 <% end %>
 
-<%= hidden_field_tag "['donotsave'][product_ids_string]", '' , :class => "product_picker_single fullwidth" %>
-<%= hidden_field_tag "['donotsave'][taxon_ids_string]", '' , :class => "taxon_picker_single fullwidth" %>
+<p>Search Product ID</p>
+<p><%= hidden_field_tag "['donotsave'][product_ids_string]", '' , :class => "product_picker_single fullwidth" %></p>
+<p>Search Taxon ID</p>
+<p><%= hidden_field_tag "['donotsave'][taxon_ids_string]", '' , :class => "taxon_picker_single fullwidth" %></p>
