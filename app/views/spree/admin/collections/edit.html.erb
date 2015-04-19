@@ -1,18 +1,10 @@
-<%= render :partial => 'spree/admin/shared/product_sub_menu' %>
-
-<% content_for :page_title do %>
-  <%= Spree.t(:editing_collection) %> <span class="green">"<%= @collection.name %>"</span>
+<% content_for :page_actions do %>
+  <%= button_link_to(Spree.t(:add_collection_item), "javascript:;", { :icon => 'add', :'data-target' => "tbody#collection_items", :class => 'btn-success spree_add_fields' }) %>
+  <%= button_link_to Spree.t(:back_to_collections_list), spree.admin_collections_path, :icon => 'icon-arrow-left' %>
 <% end %>
 
-<% content_for :page_actions do %>
-  <li>
-    <span id="new_add_collection_item" data-hook>
-      <%= link_to_add_fields Spree.t(:add_collection_item), "tbody#collection_items", :class => 'button icon-plus' %>
-    </span>
-  </li>
-  <li>
-    <%= button_link_to Spree.t(:back_to_collections_list), spree.admin_collections_path, :icon => 'icon-arrow-left' %>
-  </li>
+<% content_for :page_title do %>
+  / <%= Spree.t(:editing_collection) %> <span class="green">"<%= @collection.name %>"</span>
 <% end %>
 
 <%= render :partial => 'spree/shared/error_messages', :locals => { :target => @collection } %>

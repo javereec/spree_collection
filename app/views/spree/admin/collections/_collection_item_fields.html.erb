@@ -1,11 +1,17 @@
 <tr class="collection_item fields" id="spree_<%= dom_id(f.object) %>"  data-hook="collection_item" class="<%= cycle('odd', 'even')%>">
-  <td class="no-border">
-    <span class="handle"></span>
-    <%= f.hidden_field :id %>
+  <td class="move-handle">
+    <% if f.object.persisted? && can?(:edit, f.object) %>
+      <span class="icon icon-move handle"></span>
+      <%= f.hidden_field :id %>
+    <% end %>
   </td>
   <td class="collectionable_type"><%= f.select :collectionable_type, options_for_select([['Product', 'Spree::Product'],['Taxon', 'Spree::Taxon']], f.object.collectionable_type ) %></td>
   <td class="collectionable_id"><%= f.text_field :collectionable_id %></td>
   <td class="partial_override"><%= f.text_field :partial_override %></td>
   <td class="description"><%= f.text_area :description, :cols => 55, :rows => 1 %></td>
-  <td class="actions"><%= link_to_remove_fields Spree.t(:remove), f, :no_text => true %></td>
+  <td class="actions actions-1">
+    <% if f.object.persisted? && can?(:destroy, f.object) %>
+      <%= link_to_delete f.object, no_text: true %>
+    <% end %>
+  </td>
 </tr>

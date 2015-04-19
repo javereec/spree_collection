@@ -1,25 +1,29 @@
-<div data-hook="admin_collection_form_fields" class="align-center row">
-  <div class="sixteen columns">
-    <%= f.field_container :name do %>
-      <%= f.label :name, Spree.t(:name) %> <span class="required">*</span><br />
-      <%= f.text_field :name, :class => "fullwidth" %>
-      <%= f.error_message_on :name %>
-    <% end %>
-  </div>
+<div data-hook="admin_collection_form_fields">
+  <div class="row">
+    <div class="col-md-12" data-hook="admin_product_form_left">
+      <div data-hook="admin_product_form_name">
+        <%= f.field_container :name, class: ['form-group'] do %>
+          <%= f.label :name, Spree.t(:name) %> <span class="required">*</span><br />
+          <%= f.text_field :name, :class => "form-control title" %>
+          <%= f.error_message_on :name %>
+        <% end %>
+      </div>
 
-  <div class="sixteen columns">
-    <%= f.field_container :description do %>
-      <%= f.label :description, Spree.t(:description) %><br />
-      <%= f.text_area :description, :class => "fullwidth" %>
-      <%= f.error_message_on :description %>
-    <% end %>
-  </div>
+      <div data-hook="admin_product_form_description">
+        <%= f.field_container :description do %>
+          <%= f.label :description, Spree.t(:description) %><br />
+          <%= f.text_area :description, :class => "form-control title" %>
+          <%= f.error_message_on :description %>
+        <% end %>
+      </div>
 
-  <div class="sixteen columns">
-    <%= f.field_container :html_class do %>
-      <%= f.label :html_class, Spree.t(:html_class) %><br />
-      <%= f.text_field :html_class, :class => "fullwidth" %>
-      <%= f.error_message_on :html_class %>
-    <% end %>
+      <div data-hook="admin_product_form_html_class">
+        <%= f.field_container :html_class do %>
+          <%= f.label :html_class, Spree.t(:html_class) %><br />
+          <%= f.text_field :html_class, :class => "form-control title" %>
+          <%= f.error_message_on :html_class %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
