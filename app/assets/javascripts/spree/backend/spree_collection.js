@@ -7,7 +7,8 @@ $.fn.productAutocompleteSingle = function () {
     minimumInputLength: 3,
     initSelection: function (element, callback) {
       $.get(Spree.routes.product_search, {
-        ids: element.val().split(',')
+        ids: element.val().split(','),
+        token: Spree.api_key
       }, function (data) {
         callback(data.products);
       });
@@ -56,7 +57,8 @@ $.fn.taxonAutocompleteSingle = function () {
     minimumInputLength: 3,
     initSelection: function (element, callback) {
       $.get(Spree.routes.taxons_search, {
-        ids: element.val().split(',')
+        ids: element.val().split(','),
+        token: Spree.api_key
       }, function (data) {
         callback(data.taxons);
       });
